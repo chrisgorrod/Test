@@ -23,16 +23,24 @@
 <body>
 
 <header class="cd-main-header">
-		<a class="cd-logo" href="#0"><img src="/assets/img/logo.png" alt="Logo"></a>
+	<div class="container">
+		<div class="group">
+			<a class="cd-logo" href="/">
+				<img src="/assets/img/logo.png" alt="Logo">
+			</a>
 
-		<ul class="cd-header-buttons">
-			<li><a class="cd-nav-trigger" href="#cd-primary-nav">Menu<span></span></a></li>
-			<!-- <li><a class="cd-search-trigger" href="#cd-search">Search<span></span></a></li> -->
-		</ul> <!-- cd-header-buttons -->
-	</header>
+			<ul class="cd-header-buttons">
+				<li><a class="cd-nav-trigger" href="#cd-primary-nav">Menu<span></span></a></li>
+				<!-- <li><a class="cd-search-trigger" href="#cd-search">Search<span></span></a></li> -->
+			</ul> <!-- cd-header-buttons -->
+		</div>
+	</div>
+</header>
 
 
 	<nav class="nav">
+		<div class="container">
+			<div class="group">
 		<ul class="nav__list">
 			<li class="nav__list-item">
 				<a href="#">Home</a>
@@ -103,6 +111,8 @@
 				</ul>
 			</li>
 		</ul> <!-- primary-nav -->
+		</div>
+		</div>
 	</nav> <!-- cd-nav -->
 
 	<section class="cd-main-content">

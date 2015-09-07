@@ -39,6 +39,7 @@
 
 .cd-main-content {
   background: #e2e3df;
+  height: 100vh;
   z-index: 2;
 }
 
@@ -66,11 +67,12 @@
 }
 
 .cd-logo {
+  display: block;
+  margin: auto;
+  width: 50px;
 
   img {
-    display: block;
-    margin: auto;
-    width: 50px;
+    width: 100%;
   }
 }
 
@@ -466,7 +468,6 @@
 @media only screen and (min-width: 768px) {
   .nav__list {
     position: static;
-    padding: 0 150px 0 0;
     height: auto;
     width: auto;
     overflow: visible;

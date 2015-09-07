@@ -12,7 +12,7 @@
 	<meta property="og:description" content="New Website Description" />
 	<meta property="og:url" content="http://new.start/" />
 
-	<title>SkyWatch</title>
+	<title>Sky Watch</title>
 	<meta name="description" content="New Website Description" />
 
 	<link rel="canonical" href="" />
@@ -48,7 +48,6 @@
 
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">Clothing</a></li>
-							<li class="see-all"><a href="#">All Accessories</a></li>
 							<li><a href="#0">Beanies</a></li>
 							<li><a href="#0">Caps &amp; Hats</a></li>
 							<li><a href="#">Glasses</a></li>
@@ -99,9 +98,7 @@
 							<li><a href="#">Jumpers</a></li>
 							<li><a href="#">Polo Shirts</a></li>
 							<li><a href="#">Shirts</a></li>
-							<li>
-								<a href="#0">T-Shirts</a>
-							</li>
+							<li><a href="#0">T-Shirts</a></li>
 							<li><a href="#">Vests</a></li>
 						</ul>
 					</li>

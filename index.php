@@ -39,7 +39,7 @@
 			</li>
 
 			<li class="nav__list-item  has-children">
-				<a href="#">Find and Watch</a>
+				<a href="#">Find &amp; Watch TV</a>
 
 				<ul class="nav__list--secondary is-hidden">
 					<li class="go-back"><a href="#0">Menu</a></li>
@@ -48,8 +48,8 @@
 
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">Clothing</a></li>
-							<li><a href="#0">Beanies</a></li>
-							<li><a href="#0">Caps &amp; Hats</a></li>
+							<li><a href="#">Beanies</a></li>
+							<li><a href="#">Caps &amp; Hats</a></li>
 							<li><a href="#">Glasses</a></li>
 							<li><a href="#">Gloves</a></li>
 							<li><a href="#">Jewellery</a></li>
@@ -65,11 +65,9 @@
 						<ul class="is-hidden">
 							<li class="go-back"><a href="#0">Clothing</a></li>
 							<li><a href="#">Casual Trousers</a></li>
-							<li>
-								<a href="#0">Jeans</a>
-							</li>
-							<li><a href="#0">Leggings</a></li>
-							<li><a href="#0">Shorts</a></li>
+							<li><a href="#">Jeans</a></li>
+							<li><a href="#">Leggings</a></li>
+							<li><a href="#">Shorts</a></li>
 						</ul>
 					</li>
 

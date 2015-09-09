@@ -6,6 +6,11 @@
 
 body {
 	font-family: $sky;
-	font-size: $base-font-size;
+	font-size: 1em;
 	-webkit-font-smoothing: antialiased;
+}
+
+body, 
+html {
+	height: 100%;
 }

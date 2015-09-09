@@ -4,10 +4,71 @@
 
 
 
+/**
+ * Typographical base selectors.
+ */
+
+
+/**
+ * Headings 1–6.
+ */
+
+$start: em(48px); 
+@each $h in h1, h2, h3, h4, h5, h6{
+    #{$h} { 
+        font-size: $start;
+      }
+
+      $start: $start - 0.5;
+}
+
+
+
+
 
 
 p {
-    font-size: $base-font-size;
-    line-height:(20 / $base-font-size);
     margin-bottom: 15px;
+}
+
+
+
+
+
+/**
+ * Emboldened elements.
+ */
+strong, b,
+dt {
+    @include font-weight(bold);
+}
+
+
+
+
+
+
+/**
+ * Horizontal rules.
+ */
+hr {
+    border: none;
+
+}
+
+
+
+
+
+/**
+ * Highlighted text.
+ */
+mark {
+
+    pre & {
+        background: none;
+        border-bottom: 1px solid;
+        color: inherit;
+    }
+
 }

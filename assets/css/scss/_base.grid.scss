@@ -17,10 +17,7 @@
     width: 100%;
 	margin: 0 auto;
 	padding: 0 20px;
-    background: #ffffff;
     font-family: $sky;
-
-    @include clearfix;
 }
 
 
@@ -45,13 +42,13 @@
   * Grid columns are stacked until the display size is greater than min-width
 */
 
-@include mobilefirst(em($bp-small)) {
+@include mf($bp-small) {
 
     $unit: 6.2056333%; // Width of each grid column unit
     $margin: 2.1277%; // Margin between the grid columns
 
-    .container{
-        padding: 0;
+    .container {
+        padding: 0 0;
     }
 
     .group {
@@ -68,6 +65,7 @@
     @for $i from 1 through 12 {
         .span#{$i} {
             width: ($unit * $i) + ($margin * ($i - 1));
+            margin-bottom: 0;
             // remove float so span#'s don't stack inline.
             &.break {
                 float: none;

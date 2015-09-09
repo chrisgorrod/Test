@@ -5,13 +5,6 @@
 
 
 
-
-// Convert px font sizes to EM's
-
-@function em($px, $base: $base-font-size) {
-    @return ($px / $base) * 1em;
-}
-
 // Convert Photoshop tracking to em
 
 @function tracking($target) {
@@ -19,7 +12,7 @@
 }
 
 
-@function calculateRem($size) {
-    $remSize: $size / 16px;
-    @return $remSize * 1rem;
+
+@function em($px, $base: $base-font-size) {
+    @return ($px / $base) * 1em;
 }

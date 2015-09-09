@@ -4,238 +4,95 @@
 
 
 
-.cd-main-content, .cd-main-header {
-  /* Force Hardware Acceleration in WebKit */
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  transform: translateZ(0);
-  will-change: transform;
-}
 
-.cd-main-content, .cd-main-header {
+.main, 
+.header {
   position: relative;
   -webkit-transition: -webkit-transform 0.3s;
   -moz-transition: -moz-transform 0.3s;
   transition: transform 0.3s;
 }
+
 @media only screen and (max-width: 767px) {
-  .cd-main-content.nav-is-visible, .cd-main-header.nav-is-visible {
-    -webkit-transform: translateX(260px);
-    -moz-transform: translateX(260px);
-    -ms-transform: translateX(260px);
-    -o-transform: translateX(260px);
-    transform: translateX(260px);
-  }
-  .nav-on-left .cd-main-content.nav-is-visible, .nav-on-left .cd-main-header.nav-is-visible {
-    -webkit-transform: translateX(-260px);
-    -moz-transform: translateX(-260px);
-    -ms-transform: translateX(-260px);
-    -o-transform: translateX(-260px);
-    transform: translateX(-260px);
+  .main.nav-is-visible, .header.nav-is-visible {
+    @include translate(260px, 0);
   }
 }
 
-.cd-main-content {
-  background: #e2e3df;
-  height: 100vh;
-  z-index: 2;
-}
-
-.cd-main-header {
-  height: 50px;
-  background: #ffffff;
-  z-index: 3;
-}
-.nav-is-fixed .cd-main-header {
-  /* add .nav-is-fixed class to body if you want a fixed navigation on > 768px */
-  position: fixed;
-  top: 0;
-  left: 0;
+.main {
   width: 100%;
-}
-@media only screen and (min-width: 768px) {
-  .cd-main-header {
-    height: 80px;
-  }
-  .cd-main-header::after {
-    clear: both;
-    content: "";
-    display: table;
+  height: 100%;
+  z-index: 2;
+  position: relative;
+  top: 0;
+  margin-top: -50px;
+
+  @include mf($bp-med) {
+    margin-top: -80px;
   }
 }
 
-.cd-logo {
+.header {
+  height: 50px;
+  background: $white;
+  z-index: 3;
+
+  @include mf($bp-med) {
+    height: 80px;
+
+    @include clearfix;
+  }
+}
+
+.logo {
   display: block;
   margin: auto;
   width: 50px;
+  
+  @include mf($bp-med) {
+    float: left;
+  }
 
   img {
     width: 100%;
+    width: 50px;
+
+    @include mf($bp-med) {
+      width: auto;
+    }
   }
 }
 
-@media only screen and (max-width: 767px) {
-  .nav-on-left .cd-logo {
-    left: auto;
-    right: 5%;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .cd-logo {
-    top: 26px;
-    left: 4em;
-  }
-}
-
-.cd-header-buttons {
+.header__buttons {
   position: absolute;
   display: inline-block;
   left: 5%;
   top: 0;
-}
-.cd-header-buttons li {
-  display: inline-block;
-}
-@media only screen and (max-width: 767px) {
-  .nav-on-left .cd-header-buttons {
-    right: auto;
-    left: 5%;
-  }
-  .nav-on-left .cd-header-buttons li {
-    float: right;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .cd-header-buttons {
-    top: 18px;
-    right: 4em;
+
+  li {
+    display: inline-block;
   }
 }
 
-.cd-search-trigger, .cd-nav-trigger {
+.trigger-button {
   position: relative;
   display: block;
   width: 44px;
   height: 44px;
   overflow: hidden;
   white-space: nowrap;
-  /* hide text */
   color: transparent;
   z-index: 3;
+  
+  @include mf($bp-med) {
+    display: none;  
+  }
+  
 }
 
-.cd-search-trigger::before, .cd-search-trigger::after {
-  /* search icon */
-  content: '';
-  position: absolute;
-  -webkit-transition: opacity 0.3s;
-  -moz-transition: opacity 0.3s;
-  transition: opacity 0.3s;
-  /* Force Hardware Acceleration in WebKit */
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-.cd-search-trigger::before {
-  /* lens */
-  top: 11px;
-  left: 11px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 3px solid #2e3233;
-}
-.cd-search-trigger::after {
-  /* handle */
-  height: 3px;
-  width: 8px;
-  background: #2e3233;
-  bottom: 14px;
-  right: 11px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-.cd-search-trigger span {
-  /* container for the X icon */
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-}
-.cd-search-trigger span::before, .cd-search-trigger span::after {
-  /* close icon */
-  content: '';
-  position: absolute;
-  display: inline-block;
-  height: 3px;
-  width: 22px;
-  top: 50%;
-  margin-top: -2px;
-  left: 50%;
-  margin-left: -11px;
-  background: #2e3233;
-  opacity: 0;
-  /* Force Hardware Acceleration in WebKit */
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
-  -moz-transition: opacity 0.3s, -moz-transform 0.3s;
-  transition: opacity 0.3s, transform 0.3s;
-}
-.cd-search-trigger span::before {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-.cd-search-trigger span::after {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-}
-.cd-search-trigger.search-is-visible::before, .cd-search-trigger.search-is-visible::after {
-  /* hide search icon */
-  opacity: 0;
-}
-.cd-search-trigger.search-is-visible span::before, .cd-search-trigger.search-is-visible span::after {
-  /* show close icon */
-  opacity: 1;
-}
-.cd-search-trigger.search-is-visible span::before {
-  -webkit-transform: rotate(135deg);
-  -moz-transform: rotate(135deg);
-  -ms-transform: rotate(135deg);
-  -o-transform: rotate(135deg);
-  transform: rotate(135deg);
-}
-.cd-search-trigger.search-is-visible span::after {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.cd-nav-trigger span, .cd-nav-trigger span::before, .cd-nav-trigger span::after {
+.trigger-button span, 
+.trigger-button span::before, 
+.trigger-button span::after {
   /* hamburger icon in CSS */
   position: absolute;
   display: inline-block;
@@ -243,7 +100,8 @@
   width: 24px;
   background: #2e3233;
 }
-.cd-nav-trigger span {
+
+.trigger-button span {
   /* line in the center */
   position: absolute;
   top: 50%;
@@ -253,61 +111,57 @@
   -moz-transition: background 0.3s 0.3s;
   transition: background 0.3s 0.3s;
 }
-.cd-nav-trigger span::before, .cd-nav-trigger span::after {
+
+.trigger-button span::before, 
+.trigger-button span::after {
   /* other 2 lines */
   content: '';
   right: 0;
-  /* Force Hardware Acceleration in WebKit */
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  transform: translateZ(0);
+
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  -webkit-transform-origin: 0% 50%;
-  -moz-transform-origin: 0% 50%;
-  -ms-transform-origin: 0% 50%;
-  -o-transform-origin: 0% 50%;
-  transform-origin: 0% 50%;
+
+  @include transform-origin (0% 50%);
+
   -webkit-transition: -webkit-transform 0.3s 0.3s;
   -moz-transition: -moz-transform 0.3s 0.3s;
   transition: transform 0.3s 0.3s;
 }
-.cd-nav-trigger span::before {
+
+.trigger-button span::before {
   /* menu icon top line */
   top: -6px;
 }
-.cd-nav-trigger span::after {
+
+.trigger-button span::after {
   /* menu icon bottom line */
   top: 6px;
 }
-.cd-nav-trigger.nav-is-visible span {
+
+.trigger-button.nav-is-visible span {
   /* hide line in the center */
   background: rgba(46, 50, 51, 0);
 }
-.cd-nav-trigger.nav-is-visible span::before, .cd-nav-trigger.nav-is-visible span::after {
+
+.trigger-button.nav-is-visible span::before, .trigger-button.nav-is-visible span::after {
   /* keep visible other 2 lines */
   background: #2e3233;
 }
-.cd-nav-trigger.nav-is-visible span::before {
+
+.trigger-button.nav-is-visible span::before {
   -webkit-transform: translateX(4px) translateY(-3px) rotate(45deg);
   -moz-transform: translateX(4px) translateY(-3px) rotate(45deg);
   -ms-transform: translateX(4px) translateY(-3px) rotate(45deg);
   -o-transform: translateX(4px) translateY(-3px) rotate(45deg);
   transform: translateX(4px) translateY(-3px) rotate(45deg);
 }
-.cd-nav-trigger.nav-is-visible span::after {
+
+.trigger-button.nav-is-visible span::after {
   -webkit-transform: translateX(4px) translateY(2px) rotate(-45deg);
   -moz-transform: translateX(4px) translateY(2px) rotate(-45deg);
   -ms-transform: translateX(4px) translateY(2px) rotate(-45deg);
   -o-transform: translateX(4px) translateY(2px) rotate(-45deg);
   transform: translateX(4px) translateY(2px) rotate(-45deg);
-}
-@media only screen and (min-width: 768px) {
-  .cd-nav-trigger {
-    display: none;
-  }
 }
 
 .nav__list, .nav__list ul {
@@ -320,21 +174,12 @@
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   z-index: 1;
-  /* Force Hardware Acceleration in WebKit */
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-transform: translateX(0);
-  -moz-transform: translateX(0);
-  -ms-transform: translateX(0);
-  -o-transform: translateX(0);
-  transform: translateX(0);
+  @include translate (0,0);
   -webkit-transition: -webkit-transform 0.3s;
   -moz-transition: -moz-transform 0.3s;
   transition: transform 0.3s;
 }
+
 .nav__list a, .nav__list ul a {
   display: block;
   height: 50px;
@@ -353,46 +198,19 @@
   will-change: transform, opacity;
   @include transition (opacity, 0.3s, ease);
 }
-.nav__list.is-hidden, .nav__list ul.is-hidden {
-  /* secondary navigations hidden by default */
-  -webkit-transform: translateX(100%);
-  -moz-transform: translateX(100%);
-  -ms-transform: translateX(100%);
-  -o-transform: translateX(100%);
-  transform: translateX(100%);
+
+.nav__list.is-hidden, 
+.nav__list ul.is-hidden {
+  @include translate (100%, 0);
 }
-.nav__list.moves-out > li > a, .nav__list ul.moves-out > li > a {
+
+.nav__list.moves-out > li > a, 
+.nav__list ul.moves-out > li > a {
   /* push the navigation items to the left - and lower down opacity - when secondary nav slides in */
-  -webkit-transform: translateX(-100%);
-  -moz-transform: translateX(-100%);
-  -ms-transform: translateX(-100%);
-  -o-transform: translateX(-100%);
-  transform: translateX(-100%);
+  @include translate (100%, 0);
   opacity: 0;
 }
 
-@media only screen and (max-width: 767px) {
-  .nav-on-left .nav__list, .nav-on-left .nav__list ul {
-    right: auto;
-    left: 0;
-  }
-}
-.nav__list .see-all a {
-  /* different style for the See all button on mobile and tablet */
-  color: #69aa6f;
-}
-.nav__list .cd-nav-gallery .cd-nav-item, .nav__list .cd-nav-icons .cd-nav-item {
-  /* items with picture (or icon) and title */
-  height: 80px;
-  line-height: 80px;
-}
-.nav__list .cd-nav-gallery .cd-nav-item h3, .nav__list .cd-nav-icons .cd-nav-item h3 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.nav__list .cd-nav-gallery .cd-nav-item {
-  padding-left: 90px;
-}
 .nav__list .cd-nav-gallery .cd-nav-item img {
   position: absolute;
   display: block;
@@ -402,15 +220,18 @@
   top: 50%;
   margin-top: -20px;
 }
+
 .nav__list .cd-nav-icons .cd-nav-item {
   padding-left: 75px;
 }
+
 .nav__list .cd-nav-icons .cd-nav-item p {
   color: #2e3233;
   font-size: 1.3rem;
   /* hide description on small devices */
   display: none;
 }
+
 .nav__list .cd-nav-icons .cd-nav-item::before {
   /* item icon */
   content: '';
@@ -425,30 +246,7 @@
   background-position: center center;
   background-size: 40px 40px;
 }
-.nav__list .cd-nav-icons .cd-nav-item.item-1::before {
-  background-image: url("../img/line-icon-1.svg");
-}
-.nav__list .cd-nav-icons .cd-nav-item.item-2::before {
-  background-image: url("../img/line-icon-2.svg");
-}
-.nav__list .cd-nav-icons .cd-nav-item.item-3::before {
-  background-image: url("../img/line-icon-3.svg");
-}
-.nav__list .cd-nav-icons .cd-nav-item.item-4::before {
-  background-image: url("../img/line-icon-4.svg");
-}
-.nav__list .cd-nav-icons .cd-nav-item.item-5::before {
-  background-image: url("../img/line-icon-5.svg");
-}
-.nav__list .cd-nav-icons .cd-nav-item.item-6::before {
-  background-image: url("../img/line-icon-6.svg");
-}
-.nav__list .cd-nav-icons .cd-nav-item.item-7::before {
-  background-image: url("../img/line-icon-7.svg");
-}
-.nav__list .cd-nav-icons .cd-nav-item.item-8::before {
-  background-image: url("../img/line-icon-8.svg");
-}
+
 @media only screen and (max-width: 767px) {
   .nav__list {
     /* by default .nav__list is hidden - trick for iOS devices where you can see the navigation if you pull down */
@@ -457,6 +255,7 @@
     -moz-transition: visibility 0s 0.3s;
     transition: visibility 0s 0.3s;
   }
+
   .nav__list.nav-is-visible {
     visibility: visible;
     -webkit-transition: visibility 0s 0s;
@@ -523,45 +322,38 @@
     height: 80px;
     line-height: 80px;
     padding: 0 10px;
-    color: #2e3233;
+    color: #333;
     overflow: visible;
     border-bottom: none;
-    -webkit-transition: color 0.3s, box-shadow 0.3s;
-    -moz-transition: color 0.3s, box-shadow 0.3s;
-    transition: color 0.3s, box-shadow 0.3s;
+    @include transition (all, 0.3s, ease);
+
+    &:hover {
+      color: $blue;
+    }
+
+    &.selected {
+      color: $blue;
+    }
   }
-  .nav__list > li > a:hover {
-    color: #69aa6f;
-  }
-  .nav__list > li > a.selected {
-    color: #69aa6f;
-    box-shadow: inset 0 -2px 0 #69aa6f;
-  }
+
   .nav__list .go-back, .nav__list .see-all {
     display: none;
   }
-  .nav__list .nav__list--secondary, .nav__list .cd-nav-gallery, .nav__list .cd-nav-icons {
+
+  .nav__list .nav__list--secondary {
     /* dropdown menu style */
     position: absolute;
     top: 80px;
-    width: 100vw;
-    background: #ffffff;
-    padding: 48px 64px 130px;
-    box-shadow: inset 0 1px 0 #e2e3df, 0 3px 6px rgba(0, 0, 0, 0.05);
-    -webkit-transform: translateX(0);
-    -moz-transform: translateX(0);
-    -ms-transform: translateX(0);
-    -o-transform: translateX(0);
-    transform: translateX(0);
-    -webkit-transition: opacity .3s 0s, visibility 0s 0s;
-    -moz-transition: opacity .3s 0s, visibility 0s 0s;
-    transition: opacity .3s 0s, visibility 0s 0s;
+    width: 100%;
+    padding: 20px;
+    background: $white;
+
+    @include translate (0, 0);
+
+    @include transition (all, 0.3s, ease);
   }
-  .nav__list .nav__list--secondary::after, .nav__list .cd-nav-gallery::after, .nav__list .cd-nav-icons::after {
-    clear: both;
-    content: "";
-    display: table;
-  }
+
+
   .nav__list .nav__list--secondary.is-hidden, .nav__list .cd-nav-gallery.is-hidden, .nav__list .cd-nav-icons.is-hidden {
     opacity: 0;
     visibility: hidden;
@@ -601,11 +393,8 @@
     -moz-transition: color 0.2s, background 0.2s, border 0.2s;
     transition: color 0.2s, background 0.2s, border 0.2s;
   }
-  .nav__list .nav__list--secondary > .see-all a:hover, .nav__list .cd-nav-gallery > .see-all a:hover, .nav__list .cd-nav-icons > .see-all a:hover {
-    background: #2e3233;
-    border-color: #2e3233;
-    color: #ffffff;
-  }
+
+
   .nav__list .nav__list--secondary > li {
     /* change the height according to your needs - you can even set height: auto */
     height: 340px;
@@ -613,17 +402,16 @@
     width: 23%;
     float: left;
     margin-right: 2.66%;
-    border-right: 1px solid #e2e3df;
     overflow: hidden;
-    overflow-x: hidden;
-    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
+
   .nav__list .nav__list--secondary > li:nth-child(4n+2) {
     /* +2 because we have 2 list items with display:none */
     margin-right: 0;
     border-right: none;
   }
+
   .nav__list .nav__list--secondary > li > a {
     /* secondary nav title */
     color: #69aa6f;
@@ -631,17 +419,20 @@
     font-size: 1.6rem;
     margin-bottom: .6em;
   }
+
   .nav__list .nav__list--secondary a {
     height: 30px;
     line-height: 30px;
-    padding: 0 18% 0 0;
     color: #2e3233;
     border-bottom: none;
     font-size: 1.4rem;
   }
+
   .nav__list .nav__list--secondary a:hover {
-    color: #69aa6f;
+    color: $blue;
+    @include transition (color, 0.2s, ease);
   }
+
   .nav__list .nav__list--secondary ul {
     /* Force Hardware Acceleration in WebKit */
     -webkit-transform: translateZ(0);
@@ -650,6 +441,7 @@
     -o-transform: translateZ(0);
     transform: translateZ(0);
   }
+
   .nav__list .nav__list--secondary ul ul {
     /* tertiary navigation */
     position: absolute;
@@ -658,6 +450,7 @@
     height: 100%;
     width: 100%;
   }
+
   .nav__list .nav__list--secondary ul ul.is-hidden {
     -webkit-transform: translateX(100%);
     -moz-transform: translateX(100%);
@@ -665,15 +458,19 @@
     -o-transform: translateX(100%);
     transform: translateX(100%);
   }
+
   .nav__list .nav__list--secondary ul ul .go-back {
     display: block;
   }
+
   .nav__list .nav__list--secondary ul ul .go-back a {
     color: transparent;
   }
+
   .nav__list .nav__list--secondary ul ul .see-all {
     display: block;
   }
+
   .nav__list .nav__list--secondary .moves-out > li > a {
     /* push the navigation items to the left - and lower down opacity - when tertiary nav slides in */
     -webkit-transform: translateX(-100%);
@@ -731,7 +528,7 @@
     background: #f6f6f5;
   }
   .nav__list .cd-nav-icons .cd-nav-item h3 {
-    color: #69aa6f;
+    color:  #69aa6f;
     font-weight: bold;
   }
   .nav__list .cd-nav-icons .cd-nav-item p {
@@ -771,18 +568,13 @@
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
-@media only screen and (min-width: 768px) {
-  .has-children > a::before, .has-children > a::after, .go-back a::before, .go-back a::after {
-    background: #c9cbc4;
-  }
-  .has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after {
-    background: #69aa6f;
-  }
-}
+
+
 
 .has-children > a {
   padding-right: 40px;
 }
+
 .has-children > a::before, .has-children > a::after {
   /* arrow goes on the right side - children navigation */
   right: 20px;
@@ -806,7 +598,7 @@
   transform-origin: 1px 50%;
 }
 
-@media only screen and (min-width: 768px) {
+@include mf($bp-med) {
   .has-children > a::before, .has-children > a::after {
     right: 15%;
   }
@@ -865,122 +657,7 @@
     left: 1px;
   }
 }
-.cd-search {
-  position: absolute;
-  height: 50px;
-  width: 100%;
-  top: 50px;
-  left: 0;
-  z-index: 3;
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: opacity .3s 0s, visibility 0s .3s;
-  -moz-transition: opacity .3s 0s, visibility 0s .3s;
-  transition: opacity .3s 0s, visibility 0s .3s;
-}
-.cd-search form {
-  height: 100%;
-  width: 100%;
-}
-.cd-search input {
-  border-radius: 0;
-  border: none;
-  background: #ffffff;
-  height: 100%;
-  width: 100%;
-  padding: 0 5%;
-  box-shadow: inset 0 1px 0 #e2e3df, 0 3px 6px rgba(0, 0, 0, 0.05);
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  appearance: none;
-}
-.cd-search input::-webkit-input-placeholder {
-  color: #c9cbc4;
-}
-.cd-search input::-moz-placeholder {
-  color: #c9cbc4;
-}
-.cd-search input:-moz-placeholder {
-  color: #c9cbc4;
-}
-.cd-search input:-ms-input-placeholder {
-  color: #c9cbc4;
-}
-.cd-search input:focus {
-  outline: none;
-}
-.cd-search.is-visible {
-  opacity: 1;
-  visibility: visible;
-  -webkit-transition: opacity .3s 0s, visibility 0s 0s;
-  -moz-transition: opacity .3s 0s, visibility 0s 0s;
-  transition: opacity .3s 0s, visibility 0s 0s;
-}
-.nav-is-fixed .cd-search {
-  position: fixed;
-}
-@media only screen and (min-width: 768px) {
-  .cd-search {
-    height: 120px;
-    top: 80px;
-  }
-  .cd-search input {
-    padding: 0 2em;
-    font-size: 3.2rem;
-    font-weight: 300;
-  }
-}
 
-.cd-overlay {
-  /* shadow layer visible when navigation is active */
-  position: fixed;
-  z-index: 2;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-  background-color: rgba(105, 170, 111, 0.8);
-  visibility: hidden;
-  opacity: 0;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s, -webkit-transform 0.3s 0s;
-  -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s, -moz-transform 0.3s 0s;
-  transition: opacity 0.3s 0s, visibility 0s 0.3s, transform 0.3s 0s;
-}
-.cd-overlay.is-visible {
-  opacity: 1;
-  visibility: visible;
-  -webkit-transition: opacity 0.3s 0s, visibility 0s 0s, -webkit-transform 0.3s 0s;
-  -moz-transition: opacity 0.3s 0s, visibility 0s 0s, -moz-transform 0.3s 0s;
-  transition: opacity 0.3s 0s, visibility 0s 0s, transform 0.3s 0s;
-}
-@media only screen and (max-width: 767px) {
-  .cd-overlay.is-visible {
-    -webkit-transform: translateX(260px);
-    -moz-transform: translateX(260px);
-    -ms-transform: translateX(260px);
-    -o-transform: translateX(260px);
-    transform: translateX(260px);
-  }
-  .nav-on-left .cd-overlay.is-visible {
-    -webkit-transform: translateX(-260px);
-    -moz-transform: translateX(-260px);
-    -ms-transform: translateX(-260px);
-    -o-transform: translateX(-260px);
-    transform: translateX(-260px);
-  }
-  .cd-overlay.is-visible.search-is-visible, .nav-on-left .cd-overlay.is-visible.search-is-visible {
-    -webkit-transform: translateX(0);
-    -moz-transform: translateX(0);
-    -ms-transform: translateX(0);
-    -o-transform: translateX(0);
-    transform: translateX(0);
-  }
-}
 
 /* -------------------------------- 
 

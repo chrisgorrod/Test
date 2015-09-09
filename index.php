@@ -22,25 +22,26 @@
 </head>
 <body>
 
-<header class="cd-main-header">
+<header class="header">
 	<div class="container">
 		<div class="group">
-			<a class="cd-logo" href="/">
-				<img src="/assets/img/logo.png" alt="Logo">
-			</a>
+			<div class="span12">
+				<a class="logo" href="/">
+					<img src="/assets/img/logo.png" alt="Logo">
+				</a>
 
-			<ul class="cd-header-buttons">
-				<li><a class="cd-nav-trigger" href="#cd-primary-nav">Menu<span></span></a></li>
-				<!-- <li><a class="cd-search-trigger" href="#cd-search">Search<span></span></a></li> -->
-			</ul> <!-- cd-header-buttons -->
+				<ul class="header__buttons">
+					<li>
+						<a class="trigger-button" href="#cd-primary-nav">Menu<span></span></a>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </header>
 
 
 	<nav class="nav">
-		<div class="container">
-			<div class="group">
 		<ul class="nav__list">
 			<li class="nav__list-item">
 				<a href="#">Home</a>
@@ -104,19 +105,73 @@
 							<li><a href="#">Jumpers</a></li>
 							<li><a href="#">Polo Shirts</a></li>
 							<li><a href="#">Shirts</a></li>
-							<li><a href="#0">T-Shirts</a></li>
+							<li><a href="#">T-Shirts</a></li>
 							<li><a href="#">Vests</a></li>
 						</ul>
 					</li>
 				</ul>
 			</li>
-		</ul> <!-- primary-nav -->
-		</div>
-		</div>
-	</nav> <!-- cd-nav -->
+		</ul> 
+	</nav> <!-- close nav -->
 
-	<section class="cd-main-content">
-		<!-- your content here -->
+	<section class="main">
+
+		<div class="large-slide">
+
+			<div class="large-slide__one">
+
+				<div class="container">
+
+					<div class="group">
+
+						<div class="span6  large-slide__detail">
+
+							<h1>Sky Watch</h1>
+
+							<h2>Customised content straight to your watch</h2>
+
+							<a href="#">More information</a>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</section>
+
+	<section class="clearfix"  style="position: relative; height: 1000px;">
+
+		<div class="container">
+
+			<div class="group">
+
+
+				<div class="span6">
+
+					<p>Testing</p>
+
+				</div>
+
+				<div class="span6">
+
+					<h1>Lorem ipsum dolor</h1>
+<h2>Lorem ipsum dolor</h2>
+<h3>Lorem ipsum dolor</h3>
+<h4>Lorem ipsum dolor</h4>
+<h5>Lorem ipsum dolor</h5>
+<h6>Lorem ipsum dolor</h6>
+
+				</div>
+
+			</div>
+
+		</div>
+
 	</section>
 	
 	<script src="/assets/js/build/main.min.js"></script>

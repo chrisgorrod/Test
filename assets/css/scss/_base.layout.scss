@@ -4,13 +4,20 @@
 
 
 
-body {
-	font-family: $sky;
-	font-size: 1em;
-	-webkit-font-smoothing: antialiased;
+html{
+    font: 1em $sky, cursive;
+    -webkit-font-smoothing: antialiased;
 }
 
 body, 
 html {
 	height: 100%;
+}
+
+section {
+	padding: 60px 0;
+}
+
+.full-banner {
+	padding: 0;
 }

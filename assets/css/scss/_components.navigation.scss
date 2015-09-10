@@ -26,6 +26,7 @@
   position: relative;
   top: 0;
   margin-top: -50px;
+  padding: 0;
 
   @include mf($bp-med) {
     margin-top: -80px;
@@ -38,7 +39,7 @@
   z-index: 3;
 
   @include mf($bp-med) {
-    height: 80px;
+    height: auto;
 
     @include clearfix;
   }
@@ -46,8 +47,18 @@
 
 .logo {
   display: block;
-  margin: auto;
   width: 50px;
+  @include center-align;
+
+  @include mf($bp-med) {
+    float: left;
+    position: relative;
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    transform: translate(0,0);
+    top: auto;
+    left: auto;
+    margin: 15px auto;
   
   @include mf($bp-med) {
     float: left;
@@ -61,7 +72,17 @@
       width: auto;
     }
   }
+
+  img {
+    width: 50px;
+    line-height: 50px;
+
+    @include mf($bp-med) {
+      width: auto;
+    }
+  }
 }
+
 
 .header__buttons {
   position: absolute;
@@ -164,7 +185,8 @@
   transform: translateX(4px) translateY(2px) rotate(-45deg);
 }
 
-.nav__list, .nav__list ul {
+.nav__list, 
+.nav__list ul {
   position: fixed;
   top: 0;
   left: 0;
@@ -180,11 +202,12 @@
   transition: transform 0.3s;
 }
 
+.nav__list a, 
+.nav__list ul a {
 .nav__list a, .nav__list ul a {
   display: block;
-  height: 50px;
   line-height: 50px;
-  padding: 0 20px;
+  padding: 5px 20px;
   color: $blue;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -197,6 +220,9 @@
   transform: translateZ(0);
   will-change: transform, opacity;
   @include transition (opacity, 0.3s, ease);
+  @include mf($bp-med) {
+    line-height: 20px;
+  }
 }
 
 .nav__list.is-hidden, 
@@ -264,13 +290,13 @@
   }
 }
 
-@media only screen and (min-width: 768px) {
   .nav__list {
     position: static;
     height: auto;
     width: auto;
     overflow: visible;
     background: transparent;
+    padding-bottom: 5px;
   }
   .nav__list::after {
     clear: both;
@@ -313,7 +339,7 @@
   }
   .nav__list > li {
     float: left;
-    margin-left: 3em;
+    margin-right: 3em;
   }
   .nav__list > li > a {
     /* main navigation buttons style */
@@ -321,19 +347,28 @@
     display: inline-block;
     height: 80px;
     line-height: 80px;
-    padding: 0 10px;
-    color: #333;
+    padding: 0;
+    color: $grey;
     overflow: visible;
     border-bottom: none;
+    font-size: em(18px);
+
     @include transition (all, 0.3s, ease);
 
     &:hover {
       color: $blue;
+      text-decoration: underline;
     }
 
     &.selected {
       color: $blue;
     }
+
+    @include mf($bp-med) {
+      height: auto;
+      line-height: 1;
+    }
+
   }
 
   .nav__list .go-back, .nav__list .see-all {
@@ -343,9 +378,9 @@
   .nav__list .nav__list--secondary {
     /* dropdown menu style */
     position: absolute;
-    top: 80px;
+    top: 18px;
     width: 100%;
-    padding: 20px;
+    padding: 20px 20px 40px; 
     background: $white;
 
     @include translate (0, 0);
@@ -397,7 +432,7 @@
 
   .nav__list .nav__list--secondary > li {
     /* change the height according to your needs - you can even set height: auto */
-    height: 340px;
+    height: auto;
     /* here you set the number of columns - use width percentage */
     width: 23%;
     float: left;
@@ -414,18 +449,17 @@
 
   .nav__list .nav__list--secondary > li > a {
     /* secondary nav title */
-    color: #69aa6f;
+    color: $grey;
     font-weight: bold;
-    font-size: 1.6rem;
-    margin-bottom: .6em;
+    font-size: em(18px);
   }
 
   .nav__list .nav__list--secondary a {
+    color: $grey;
     height: 30px;
     line-height: 30px;
-    color: #2e3233;
     border-bottom: none;
-    font-size: 1.4rem;
+    font-size: em(18px);
   }
 
   .nav__list .nav__list--secondary a:hover {
@@ -694,4 +728,8 @@ support for no js
   .no-js .nav-is-fixed .nav__list {
     position: fixed;
   }
+}
+
+.active {
+  font-family: $sky-med;
 }
